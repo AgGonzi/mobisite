@@ -10,9 +10,28 @@
 </head>
 <body>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-    <span class="theme-toggle-icon">🌙</span>
-  </button>
+  <!-- TOP-RIGHT CONTROLS -->
+  <div class="top-controls">
+    <!-- Language picker -->
+    <div class="lang-picker" id="langPicker">
+      <button class="lang-btn" id="langToggle" aria-haspopup="listbox" aria-expanded="false">
+        <span class="lang-flag" id="langFlag">🇬🇧</span>
+        <span class="lang-code" id="langCode">EN</span>
+        <span class="lang-chevron">&#8964;</span>
+      </button>
+      <ul class="lang-dropdown" role="listbox" id="langDropdown" aria-label="Select language">
+        <li role="option" data-lang="el" data-flag="🇬🇷" data-code="EL">Greek &mdash; Ελληνικά</li>
+        <li role="option" data-lang="en" data-flag="🇬🇧" data-code="EN">English</li>
+        <li role="option" data-lang="fr" data-flag="🇫🇷" data-code="FR">French &mdash; Français</li>
+        <li role="option" data-lang="de" data-flag="🊗🇨" data-code="DE">German &mdash; Deutsch</li>
+        <li role="option" data-lang="es" data-flag="🇪🇸" data-code="ES">Spanish &mdash; Español</li>
+      </ul>
+    </div>
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <span class="theme-toggle-icon">🌙</span>
+    </button>
+  </div>
 
   <main class="page">
     <div class="orb orb-1" aria-hidden="true"></div>
@@ -23,27 +42,27 @@
     </header>
 
     <section class="hero">
-      <span class="badge">🚌 Public transport, reinvented</span>
-      <h1>Move smarter<br/>through the city</h1>
-      <p>MOBi is an upcoming mobility companion for public transport in Greece — real-time routes, live arrivals, and seamless trip planning. The app is not available yet.</p>
+      <span class="badge" data-i18n="badge">🚌 Public transport, reinvented</span>
+      <h1 data-i18n="h1_1">Move smarter</h1>
+      <p data-i18n="subtitle">MOBi is an upcoming mobility companion for public transport in Greece — real-time routes, live arrivals, and seamless trip planning. The app is not available yet.</p>
       <form class="waitlist-form" id="waitlistForm">
         <div class="input-wrap">
           <input type="email" id="waitlistEmail" class="waitlist-input"
-            placeholder="Enter your email address" aria-label="Email address" required />
-          <button type="submit" class="btn-submit">Notify me</button>
+            placeholder="Enter your email address" aria-label="Email address" required
+            data-i18n-placeholder="placeholder" />
+          <button type="submit" class="btn-submit" data-i18n="cta">Notify me</button>
         </div>
         <p class="waitlist-message" id="waitlistMessage" aria-live="polite"></p>
       </form>
     </section>
 
     <section class="features-panel" aria-label="Features">
-
       <div class="feat-list" role="tablist" aria-label="Feature list">
 
         <button class="feat-pill" role="tab" data-feat="maps" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">🗺️</span>
-            <span class="pill-label">Live Maps</span>
+            <span class="pill-label" data-i18n="feat_maps">Live Maps</span>
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
@@ -51,7 +70,7 @@
         <button class="feat-pill" role="tab" data-feat="arrivals" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">⏱️</span>
-            <span class="pill-label">Exact Arrivals</span>
+            <span class="pill-label" data-i18n="feat_arrivals">Exact Arrivals</span>
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
@@ -59,7 +78,7 @@
         <button class="feat-pill" role="tab" data-feat="alerts" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">🔔</span>
-            <span class="pill-label">Smart Alerts</span>
+            <span class="pill-label" data-i18n="feat_alerts">Smart Alerts</span>
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
@@ -67,7 +86,7 @@
         <button class="feat-pill" role="tab" data-feat="dark" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">🌙</span>
-            <span class="pill-label">Dark Mode</span>
+            <span class="pill-label" data-i18n="feat_dark">Dark Mode</span>
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
@@ -75,7 +94,7 @@
         <button class="feat-pill" role="tab" data-feat="offline" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">📴</span>
-            <span class="pill-label">Offline Access</span>
+            <span class="pill-label" data-i18n="feat_offline">Offline Access</span>
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
@@ -83,55 +102,53 @@
         <button class="feat-pill" role="tab" data-feat="a11y" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">♿</span>
-            <span class="pill-label">Accessibility</span>
+            <span class="pill-label" data-i18n="feat_a11y">Accessibility</span>
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
       </div>
 
       <div class="feat-card-area" aria-live="polite">
         <div class="feat-card" id="feat-maps">
           <div class="feat-card-icon">🗺️</div>
-          <h3>Live Maps</h3>
-          <p>Track buses, metro lines, and trams on a clean interactive map that refreshes every few seconds. See exactly where your vehicle is — no more wondering if it’s around the corner.</p>
+          <h3 data-i18n="feat_maps">Live Maps</h3>
+          <p data-i18n="feat_maps_desc">Track buses, metro lines, and trams on a clean interactive map that refreshes every few seconds. See exactly where your vehicle is — no more wondering if it’s around the corner.</p>
         </div>
         <div class="feat-card" id="feat-arrivals">
           <div class="feat-card-icon">⏱️</div>
-          <h3>Exact Arrivals</h3>
-          <p>Get precise, live arrival times for every stop on every line in your city. Say goodbye to guessing and plan your walk to the stop with confidence.</p>
+          <h3 data-i18n="feat_arrivals">Exact Arrivals</h3>
+          <p data-i18n="feat_arrivals_desc">Get precise, live arrival times for every stop on every line in your city. Say goodbye to guessing and plan your walk to the stop with confidence.</p>
         </div>
         <div class="feat-card" id="feat-alerts">
           <div class="feat-card-icon">🔔</div>
-          <h3>Smart Alerts</h3>
-          <p>Receive timely notifications for service delays, line disruptions, and when your bus is approaching. MOBi pings you so you don’t have to keep checking.</p>
+          <h3 data-i18n="feat_alerts">Smart Alerts</h3>
+          <p data-i18n="feat_alerts_desc">Receive timely notifications for service delays, line disruptions, and when your bus is approaching. MOBi pings you so you don’t have to keep checking.</p>
         </div>
         <div class="feat-card" id="feat-dark">
           <div class="feat-card-icon">🌙</div>
-          <h3>Dark Mode</h3>
-          <p>MOBi is designed for day and night. A built-in dark theme reduces eye strain during late commutes and looks great on OLED displays.</p>
+          <h3 data-i18n="feat_dark">Dark Mode</h3>
+          <p data-i18n="feat_dark_desc">MOBi is designed for day and night. A built-in dark theme reduces eye strain during late commutes and looks great on OLED displays.</p>
         </div>
         <div class="feat-card" id="feat-offline">
           <div class="feat-card-icon">📴</div>
-          <h3>Offline Access</h3>
-          <p>Download your city’s routes and timetables locally. Navigate the network even when you have no signal underground or in a dead zone.</p>
+          <h3 data-i18n="feat_offline">Offline Access</h3>
+          <p data-i18n="feat_offline_desc">Download your city’s routes and timetables locally. Navigate the network even when you have no signal underground or in a dead zone.</p>
         </div>
         <div class="feat-card" id="feat-a11y">
           <div class="feat-card-icon">♿</div>
-          <h3>Accessibility</h3>
-          <p>Full screen-reader support, high-contrast mode, and large-text options ensure every commuter — regardless of ability — can travel with confidence.</p>
+          <h3 data-i18n="feat_a11y">Accessibility</h3>
+          <p data-i18n="feat_a11y_desc">Full screen-reader support, high-contrast mode, and large-text options ensure every commuter — regardless of ability — can travel with confidence.</p>
         </div>
       </div>
-
     </section>
   </main>
 
   <footer class="footer">
-    <p>© 2026 MOBi. Built with ❤️ in Greece.</p>
+    <p data-i18n="footer">© 2026 MOBi. Built with ❤️ in Greece.</p>
     <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Contact</a>
+      <a href="#" data-i18n="privacy">Privacy</a>
+      <a href="#" data-i18n="terms">Terms</a>
+      <a href="#" data-i18n="contact">Contact</a>
     </div>
   </footer>
 
