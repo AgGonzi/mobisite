@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOBi — Move Smarter</title>
+  <title>MOBi — Public Transport, Coming Soon</title>
+  <meta name="description" content="MOBi is an upcoming public transport app for Greece. Join the waitlist to hear when it launches." />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -12,23 +13,25 @@
   <!-- NAV -->
   <nav class="navbar">
     <div class="nav-inner">
-      <a href="#" class="logo-link">
+      <a href="#home" class="logo-link" aria-label="MOBi home">
         <img src="logo.png" alt="MOBi" class="nav-logo" />
       </a>
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#how">How it works</a></li>
-        <li><a href="#notify" class="btn btn-nav">Get Notified</a></li>
+        <li><a href="#waitlist" class="btn btn-nav">Join waitlist</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+        </button>
         <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
       </div>
     </div>
     <ul class="nav-mobile" id="navMobile">
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a href="#notify">Get Notified</a></li>
+      <li><a href="#waitlist">Join waitlist</a></li>
     </ul>
   </nav>
 
@@ -37,12 +40,15 @@
     <div class="hero-content">
       <span class="badge">🚌 Public Transport, Reinvented</span>
       <h1>Move smarter<br/>through the city</h1>
-      <p>MOBi is your all-in-one mobility companion — real-time routes, live arrivals, and seamless trip planning at your fingertips.</p>
-      <div class="hero-cta">
-        <a href="#notify" class="btn btn-primary">Notify Me at Launch</a>
-        <a href="#how" class="btn btn-ghost">See how it works →</a>
+      <p>MOBi is an upcoming mobility companion for public transport in Greece — real-time routes, live arrivals, and seamless trip planning.</p>
+      <div class="hero-status">
+        <span class="status-pill">🚧 Coming soon</span>
+        <p class="status-copy">The app is not available yet. Join the waitlist and be the first to know when it launches.</p>
       </div>
-      <div class="coming-soon-pill">🚧 App coming soon — we're working on it!</div>
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
+        <a href="#how" class="btn btn-ghost">See how it will work →</a>
+      </div>
     </div>
     <div class="hero-visual">
       <div class="phone-mockup">
@@ -54,7 +60,7 @@
           </div>
           <div class="mock-card">
             <span class="route-badge">🚌 Line 304</span>
-            <p class="arriving">Arriving in <strong>3 min</strong></p>
+            <p class="arriving">Launching <strong>soon</strong></p>
           </div>
         </div>
       </div>
@@ -64,37 +70,37 @@
   <!-- FEATURES -->
   <section class="features" id="features">
     <div class="section-inner">
-      <h2>Everything you need<br/>to get around</h2>
+      <h2>What MOBi is being built for</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feat-icon">🗺️</div>
           <h3>Live Maps</h3>
-          <p>See real-time bus and metro positions on an interactive map updated every few seconds.</p>
+          <p>Track buses and metro lines on a clean, interactive map updated every few seconds.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">⏱️</div>
-          <h3>Exact Arrivals</h3>
-          <p>No more guessing. Get precise arrival times for every stop on every line in your city.</p>
+          <h3>Accurate Arrivals</h3>
+          <p>See precise arrival times instead of guessing at the stop.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">🔔</div>
           <h3>Smart Alerts</h3>
-          <p>Receive notifications for delays, service disruptions, and when your bus is about to arrive.</p>
+          <p>Get notified about delays, disruptions, and when your bus is close.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">🌙</div>
           <h3>Dark Mode</h3>
-          <p>Beautifully designed for day and night — easy on the eyes no matter when you travel.</p>
+          <p>Comfortable day and night viewing with a built-in theme toggle.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">📴</div>
           <h3>Offline Access</h3>
-          <p>Download routes and schedules to navigate even when you have no signal underground.</p>
+          <p>Download routes and schedules to navigate even without signal.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">♿</div>
           <h3>Accessibility</h3>
-          <p>Full accessibility support so every commuter, regardless of ability, can travel with confidence.</p>
+          <p>Designed so every commuter, regardless of ability, can travel with confidence.</p>
         </div>
       </div>
     </div>
@@ -103,43 +109,43 @@
   <!-- HOW IT WORKS -->
   <section class="how" id="how">
     <div class="section-inner">
-      <h2>Up and running in<br/>under a minute</h2>
+      <h2>How launch updates work</h2>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3>Sign up for early access</h3>
-          <p>Leave your email and be the first to know when MOBi launches in your city.</p>
+          <h3>Join the waitlist</h3>
+          <p>Leave your email to get launch news and early access updates.</p>
         </div>
         <div class="step-arrow">→</div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3>Pick your city</h3>
-          <p>Choose your city and MOBi loads all lines, stops and live data instantly.</p>
+          <h3>We finish the app</h3>
+          <p>MOBi is still in development and not yet publicly available.</p>
         </div>
         <div class="step-arrow">→</div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3>Start moving</h3>
-          <p>Plan trips, track buses, and never miss a departure again.</p>
+          <h3>Get notified</h3>
+          <p>You'll be among the first to know when the app goes live.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NOTIFY / COMING SOON -->
-  <section class="download" id="notify">
+  <!-- WAITLIST -->
+  <section class="download" id="waitlist">
     <div class="section-inner dl-inner">
       <div class="dl-text">
         <h2>MOBi is on its way.</h2>
         <p>We're putting the finishing touches on the app. Drop your email below and we'll let you know the moment it's live — before anyone else.</p>
-        <form class="notify-form" id="notifyForm">
-          <input type="email" class="notify-input" placeholder="your@email.com" required />
-          <button type="submit" class="btn btn-primary">Notify Me</button>
+        <form class="waitlist-form" id="waitlistForm">
+          <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="your@email.com" aria-label="Email address" required />
+          <button type="submit" class="btn btn-primary">Notify me</button>
         </form>
-        <p class="notify-note" id="notifyMsg" style="display:none;">🎉 You're on the list! We'll reach out soon.</p>
+        <p class="waitlist-message" id="waitlistMessage" aria-live="polite"></p>
       </div>
       <div class="dl-visual">
-        <div class="dl-badge">🚇 Athens · 🚌 Thessaloniki · 🚊 More cities soon</div>
+        <div class="dl-badge">🚇 Athens · 🚌 Thessaloniki · 🚊 More cities planned</div>
       </div>
     </div>
   </section>
