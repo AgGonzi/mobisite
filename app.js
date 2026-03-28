@@ -35,14 +35,14 @@ const i18n = {
     feat_maps_desc:     'Παρακολουθήστε λεωφορεία, μετρό και τράμ σε έναν καθαρό χάρτη που ανανεώνεται κάθε λίγα δευτερόλεπτα.',
     feat_arrivals:      'Ακριβής Άφιξη',
     feat_arrivals_desc: 'Δείτε ακριβείς χρόνους άφιξης για κάθε στάση σε κάθε γραμμή της πόλης σας.',
-    feat_alerts:        'Εξυπνοί τερματισμοί',
+    feat_alerts:        'Εξυπνοί Τερματισμοί',
     feat_alerts_desc:   'Λάβετε ειδοποιήσεις για καθυστερήσεις και διακοπές δρομολογίων.',
-    feat_dark:          'Εμφάνιση νύχτας',
-    feat_dark_desc:     'Το MOBi είναι σχεδιασμένο για μέρα και νύχτα. Το σκούρο θέμα μειώνει την κόπωση των ματιών και δείχνει τέλεια σε OLED οθόνες.',
-    feat_offline:       'Χρήση χωρίς σύνδεση',
+    feat_dark:          'Εμφάνιση Νύχτας',
+    feat_dark_desc:     'Το MOBi είναι σχεδιασμένο για μέρα και νύχτα. Το σκούρο θέμα μειώνει την κόπωση των ματιών.',
+    feat_offline:       'Χρήση χωρίς Σύνδεση',
     feat_offline_desc:  'Κατεβάστε δρομολόγια και ωράρια τοπικά. Περιηγηθείτε ακόμα και χωρίς σήμα υπογείως.',
     feat_a11y:          'Προσβασιμότητα',
-    feat_a11y_desc:     'Υποστήριξη αναγνώστη οθόνης, υψηλή αντίθεση και μεγάλα γράμματα, ώστε κάθε επιβάτης να ταξιδεύει με αυτοπεποίθηση.',
+    feat_a11y_desc:     'Υποστήριξη αναγνώστη οθόνης, υψηλή αντίθεση και μεγάλα γράμματα για κάθε επιβάτη.',
     footer:             '© 2026 MOBi. Φτιάχτηκε με ❤️ στην Ελλάδα.',
     privacy:            'Απόρρητο',
     terms:              'Όροι',
@@ -75,7 +75,7 @@ const i18n = {
   de: {
     badge:              '🚌 ÖPNV, neu gedacht',
     h1_1:               'Smarter durch<br/>die Stadt',
-    subtitle:           'MOBi ist eine kommende Mobiliäts-App für den öffentlichen Nahverkehr in Griechenland — Echtzeit-Routen, Live-Ankunftszeiten und nahtlose Reiseplanung. Die App ist noch nicht verfügbar.',
+    subtitle:           'MOBi ist eine kommende Mobilitäts-App für den öffentlichen Nahverkehr in Griechenland — Echtzeit-Routen, Live-Ankunftszeiten und nahtlose Reiseplanung. Die App ist noch nicht verfügbar.',
     placeholder:        'E-Mail-Adresse eingeben',
     cta:                'Benachrichtigen',
     success:            '🎉 Danke! Wir benachrichtigen Sie, sobald MOBi verfügbar ist.',
@@ -101,7 +101,7 @@ const i18n = {
     h1_1:               'Muévete más<br/>inteligente por la ciudad',
     subtitle:           'MOBi es una próxima aplicación de movilidad para el transporte público en Grecia — rutas en tiempo real, llegadas en vivo y planificación de viajes. La app aún no está disponible.',
     placeholder:        'Introduce tu correo electrónico',
-    cta:                'Aviésame',
+    cta:                'Avísame',
     success:            '🎉 ¡Gracias! Te avisaremos cuando MOBi se lance.',
     feat_maps:          'Mapas en vivo',
     feat_maps_desc:     'Sigue autobuses, metro y tranvías en un mapa interactivo que se actualiza cada pocos segundos.',
@@ -142,33 +142,28 @@ if (themeToggle) themeToggle.addEventListener('click', () => setTheme(document.b
 // ── LANGUAGE ──
 const langToggle   = document.getElementById('langToggle');
 const langDropdown = document.getElementById('langDropdown');
-const langFlag     = document.getElementById('langFlag');
-const langCode     = document.getElementById('langCode');
+const langNameEl   = document.getElementById('langName');
 const langItems    = Array.from(langDropdown.querySelectorAll('li'));
 
 function applyLang(code) {
   const t = i18n[code];
   if (!t) return;
 
-  // text nodes
+  // translate page text
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
-  // placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.dataset.i18nPlaceholder;
     if (t[key] !== undefined) el.placeholder = t[key];
   });
 
-  // update button
+  // update button label to the native name of the selected language
   const item = langItems.find(li => li.dataset.lang === code);
-  if (item) {
-    langFlag.textContent = item.dataset.flag;
-    langCode.textContent = item.dataset.code;
-  }
+  if (item && langNameEl) langNameEl.textContent = item.dataset.native;
 
-  // mark selected
+  // mark selected item
   langItems.forEach(li => li.setAttribute('aria-selected', li.dataset.lang === code ? 'true' : 'false'));
 
   document.documentElement.lang = code;
@@ -180,22 +175,16 @@ function toggleDropdown(open) {
   langToggle.setAttribute('aria-expanded', String(open));
 }
 
-langToggle.addEventListener('click', (e) => {
+langToggle.addEventListener('click', e => {
   e.stopPropagation();
-  toggleDropdown(langDropdown.classList.contains('open') ? false : true);
+  toggleDropdown(!langDropdown.classList.contains('open'));
 });
-
 langItems.forEach(li => {
-  li.addEventListener('click', () => {
-    applyLang(li.dataset.lang);
-    toggleDropdown(false);
-  });
+  li.addEventListener('click', () => { applyLang(li.dataset.lang); toggleDropdown(false); });
 });
-
 document.addEventListener('click', () => toggleDropdown(false));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleDropdown(false); });
 
-// Init language
 applyLang(localStorage.getItem('mobi-lang') || 'en');
 
 // ── WAITLIST ──
@@ -261,7 +250,6 @@ if (panel) {
 
 showCard(0);
 
-// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateX(0)'; }

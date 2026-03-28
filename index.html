@@ -12,22 +12,19 @@
 
   <!-- TOP-RIGHT CONTROLS -->
   <div class="top-controls">
-    <!-- Language picker -->
     <div class="lang-picker" id="langPicker">
       <button class="lang-btn" id="langToggle" aria-haspopup="listbox" aria-expanded="false">
-        <span class="lang-flag" id="langFlag">🇬🇧</span>
-        <span class="lang-code" id="langCode">EN</span>
+        <span class="lang-name" id="langName">English</span>
         <span class="lang-chevron">&#8964;</span>
       </button>
       <ul class="lang-dropdown" role="listbox" id="langDropdown" aria-label="Select language">
-        <li role="option" data-lang="el" data-flag="🇬🇷" data-code="EL">Greek &mdash; Ελληνικά</li>
-        <li role="option" data-lang="en" data-flag="🇬🇧" data-code="EN">English</li>
-        <li role="option" data-lang="fr" data-flag="🇫🇷" data-code="FR">French &mdash; Français</li>
-        <li role="option" data-lang="de" data-flag="🊗🇨" data-code="DE">German &mdash; Deutsch</li>
-        <li role="option" data-lang="es" data-flag="🇪🇸" data-code="ES">Spanish &mdash; Español</li>
+        <li role="option" data-lang="el" data-native="Ελληνικά">Ελληνικά</li>
+        <li role="option" data-lang="en" data-native="English">English</li>
+        <li role="option" data-lang="fr" data-native="Français">Français</li>
+        <li role="option" data-lang="de" data-native="Deutsch">Deutsch</li>
+        <li role="option" data-lang="es" data-native="Español">Español</li>
       </ul>
     </div>
-    <!-- Theme toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
       <span class="theme-toggle-icon">🌙</span>
     </button>
@@ -43,7 +40,7 @@
 
     <section class="hero">
       <span class="badge" data-i18n="badge">🚌 Public transport, reinvented</span>
-      <h1 data-i18n="h1_1">Move smarter</h1>
+      <h1 data-i18n="h1_1">Move smarter<br/>through the city</h1>
       <p data-i18n="subtitle">MOBi is an upcoming mobility companion for public transport in Greece — real-time routes, live arrivals, and seamless trip planning. The app is not available yet.</p>
       <form class="waitlist-form" id="waitlistForm">
         <div class="input-wrap">
@@ -58,7 +55,6 @@
 
     <section class="features-panel" aria-label="Features">
       <div class="feat-list" role="tablist" aria-label="Feature list">
-
         <button class="feat-pill" role="tab" data-feat="maps" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">🗺️</span>
@@ -66,7 +62,6 @@
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
         <button class="feat-pill" role="tab" data-feat="arrivals" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">⏱️</span>
@@ -74,7 +69,6 @@
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
         <button class="feat-pill" role="tab" data-feat="alerts" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">🔔</span>
@@ -82,7 +76,6 @@
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
         <button class="feat-pill" role="tab" data-feat="dark" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">🌙</span>
@@ -90,7 +83,6 @@
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
         <button class="feat-pill" role="tab" data-feat="offline" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">📴</span>
@@ -98,7 +90,6 @@
           </span>
           <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
         <button class="feat-pill" role="tab" data-feat="a11y" aria-selected="false">
           <span class="pill-top">
             <span class="pill-icon">♿</span>
