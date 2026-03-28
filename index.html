@@ -15,8 +15,6 @@
   </button>
 
   <main class="page">
-
-    <!-- GLOW ORBS -->
     <div class="orb orb-1" aria-hidden="true"></div>
     <div class="orb orb-2" aria-hidden="true"></div>
 
@@ -33,111 +31,88 @@
 
       <form class="waitlist-form" id="waitlistForm">
         <div class="input-wrap">
-          <input
-            type="email"
-            id="waitlistEmail"
-            class="waitlist-input"
-            placeholder="Enter your email address"
-            aria-label="Email address"
-            required
-          />
+          <input type="email" id="waitlistEmail" class="waitlist-input"
+            placeholder="Enter your email address" aria-label="Email address" required />
           <button type="submit" class="btn-submit">Notify me</button>
         </div>
         <p class="waitlist-message" id="waitlistMessage" aria-live="polite"></p>
       </form>
     </section>
 
-    <!-- FEATURES -->
-    <section class="features">
-      <div class="features-grid">
+    <!-- FEATURES PANEL -->
+    <section class="features-panel" aria-label="Features">
 
-        <button class="feat" data-feat="maps" aria-expanded="false">
-          <span class="feat-icon">🗺️</span>
-          <span class="feat-label">Live Maps</span>
-          <span class="feat-arrow">&#8250;</span>
+      <!-- LEFT: pill list -->
+      <div class="feat-list" role="tablist" aria-label="Feature list">
+        <button class="feat-pill" role="tab" data-feat="maps" aria-selected="false">
+          <span class="pill-icon">🗺️</span>
+          <span class="pill-label">Live Maps</span>
+          <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
-        <button class="feat" data-feat="arrivals" aria-expanded="false">
-          <span class="feat-icon">⏱️</span>
-          <span class="feat-label">Exact Arrivals</span>
-          <span class="feat-arrow">&#8250;</span>
+        <button class="feat-pill" role="tab" data-feat="arrivals" aria-selected="false">
+          <span class="pill-icon">⏱️</span>
+          <span class="pill-label">Exact Arrivals</span>
+          <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
-        <button class="feat" data-feat="alerts" aria-expanded="false">
-          <span class="feat-icon">🔔</span>
-          <span class="feat-label">Smart Alerts</span>
-          <span class="feat-arrow">&#8250;</span>
+        <button class="feat-pill" role="tab" data-feat="alerts" aria-selected="false">
+          <span class="pill-icon">🔔</span>
+          <span class="pill-label">Smart Alerts</span>
+          <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
-        <button class="feat" data-feat="dark" aria-expanded="false">
-          <span class="feat-icon">🌙</span>
-          <span class="feat-label">Dark Mode</span>
-          <span class="feat-arrow">&#8250;</span>
+        <button class="feat-pill" role="tab" data-feat="dark" aria-selected="false">
+          <span class="pill-icon">🌙</span>
+          <span class="pill-label">Dark Mode</span>
+          <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
-        <button class="feat" data-feat="offline" aria-expanded="false">
-          <span class="feat-icon">📴</span>
-          <span class="feat-label">Offline Access</span>
-          <span class="feat-arrow">&#8250;</span>
+        <button class="feat-pill" role="tab" data-feat="offline" aria-selected="false">
+          <span class="pill-icon">📴</span>
+          <span class="pill-label">Offline Access</span>
+          <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
-        <button class="feat" data-feat="a11y" aria-expanded="false">
-          <span class="feat-icon">♿</span>
-          <span class="feat-label">Accessibility</span>
-          <span class="feat-arrow">&#8250;</span>
+        <button class="feat-pill" role="tab" data-feat="a11y" aria-selected="false">
+          <span class="pill-icon">♿</span>
+          <span class="pill-label">Accessibility</span>
+          <span class="pill-bar"><span class="pill-bar-fill"></span></span>
         </button>
-
       </div>
-    </section>
 
+      <!-- RIGHT: info card -->
+      <div class="feat-card-area" aria-live="polite">
+        <div class="feat-card" id="feat-maps">
+          <div class="feat-card-icon">🗺️</div>
+          <h3>Live Maps</h3>
+          <p>Track buses, metro lines, and trams on a clean interactive map that refreshes every few seconds. See exactly where your vehicle is — no more wondering if it’s around the corner.</p>
+        </div>
+        <div class="feat-card" id="feat-arrivals">
+          <div class="feat-card-icon">⏱️</div>
+          <h3>Exact Arrivals</h3>
+          <p>Get precise, live arrival times for every stop on every line in your city. Say goodbye to guessing and plan your walk to the stop with confidence.</p>
+        </div>
+        <div class="feat-card" id="feat-alerts">
+          <div class="feat-card-icon">🔔</div>
+          <h3>Smart Alerts</h3>
+          <p>Receive timely notifications for service delays, line disruptions, and when your bus is approaching. MOBi pings you so you don’t have to keep checking.</p>
+        </div>
+        <div class="feat-card" id="feat-dark">
+          <div class="feat-card-icon">🌙</div>
+          <h3>Dark Mode</h3>
+          <p>MOBi is designed for day and night. A built-in dark theme reduces eye strain during late commutes and looks great on OLED displays.</p>
+        </div>
+        <div class="feat-card" id="feat-offline">
+          <div class="feat-card-icon">📴</div>
+          <h3>Offline Access</h3>
+          <p>Download your city’s routes and timetables locally. Navigate the network even when you have no signal underground or in a dead zone.</p>
+        </div>
+        <div class="feat-card" id="feat-a11y">
+          <div class="feat-card-icon">♿</div>
+          <h3>Accessibility</h3>
+          <p>Full screen-reader support, high-contrast mode, and large-text options ensure every commuter — regardless of ability — can travel with confidence.</p>
+        </div>
+      </div>
+
+    </section>
   </main>
 
-  <!-- FEATURE INFO CARDS (modal-style) -->
-  <div class="feat-overlay" id="featOverlay" aria-hidden="true"></div>
-
-  <div class="feat-card" id="feat-maps" role="dialog" aria-modal="true" aria-labelledby="feat-maps-title" hidden>
-    <button class="feat-card-close" aria-label="Close">&times;</button>
-    <div class="feat-card-icon">🗺️</div>
-    <h3 id="feat-maps-title">Live Maps</h3>
-    <p>Track buses, metro lines, and trams on a clean interactive map that refreshes every few seconds. See exactly where your vehicle is — no more wondering if it’s around the corner.</p>
-  </div>
-
-  <div class="feat-card" id="feat-arrivals" role="dialog" aria-modal="true" aria-labelledby="feat-arrivals-title" hidden>
-    <button class="feat-card-close" aria-label="Close">&times;</button>
-    <div class="feat-card-icon">⏱️</div>
-    <h3 id="feat-arrivals-title">Exact Arrivals</h3>
-    <p>Get precise, live arrival times for every stop on every line in your city. Say goodbye to guessing and plan your walk to the stop with confidence.</p>
-  </div>
-
-  <div class="feat-card" id="feat-alerts" role="dialog" aria-modal="true" aria-labelledby="feat-alerts-title" hidden>
-    <button class="feat-card-close" aria-label="Close">&times;</button>
-    <div class="feat-card-icon">🔔</div>
-    <h3 id="feat-alerts-title">Smart Alerts</h3>
-    <p>Receive timely notifications for service delays, line disruptions, and when your bus is approaching. MOBi pings you so you don’t have to keep checking.</p>
-  </div>
-
-  <div class="feat-card" id="feat-dark" role="dialog" aria-modal="true" aria-labelledby="feat-dark-title" hidden>
-    <button class="feat-card-close" aria-label="Close">&times;</button>
-    <div class="feat-card-icon">🌙</div>
-    <h3 id="feat-dark-title">Dark Mode</h3>
-    <p>MOBi is designed for day and night. A built-in dark theme reduces eye strain during late commutes and looks great on OLED displays.</p>
-  </div>
-
-  <div class="feat-card" id="feat-offline" role="dialog" aria-modal="true" aria-labelledby="feat-offline-title" hidden>
-    <button class="feat-card-close" aria-label="Close">&times;</button>
-    <div class="feat-card-icon">📴</div>
-    <h3 id="feat-offline-title">Offline Access</h3>
-    <p>Download your city’s routes and timetables locally. Navigate the network even when you have no signal underground or in a dead zone.</p>
-  </div>
-
-  <div class="feat-card" id="feat-a11y" role="dialog" aria-modal="true" aria-labelledby="feat-a11y-title" hidden>
-    <button class="feat-card-close" aria-label="Close">&times;</button>
-    <div class="feat-card-icon">♿</div>
-    <h3 id="feat-a11y-title">Accessibility</h3>
-    <p>Full screen-reader support, high-contrast mode, and large-text options ensure every commuter — regardless of ability — can travel with confidence.</p>
-  </div>
-
-  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2026 MOBi. Built with ❤️ in Greece.</p>
     <div class="footer-links">

@@ -1,4 +1,4 @@
-// ── DARK / LIGHT TOGGLE ──
+// ── THEME ──
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon   = document.querySelector('.theme-toggle-icon');
 
@@ -8,26 +8,19 @@ function setTheme(dark) {
   if (themeToggle) themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   localStorage.setItem('mobi-theme', dark ? 'dark' : 'light');
 }
-
 (function initTheme() {
   const saved = localStorage.getItem('mobi-theme');
   if (saved === 'light') { setTheme(false); return; }
   if (saved === 'dark')  { setTheme(true);  return; }
   setTheme(!window.matchMedia('(prefers-color-scheme: light)').matches);
 })();
+if (themeToggle) themeToggle.addEventListener('click', () => setTheme(document.body.classList.contains('light')));
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', () =>
-    setTheme(document.body.classList.contains('light'))
-  );
-}
-
-// ── WAITLIST FORM ──
+// ── WAITLIST ──
 const waitlistForm    = document.getElementById('waitlistForm');
 const waitlistMessage = document.getElementById('waitlistMessage');
-
 if (waitlistForm && waitlistMessage) {
-  waitlistForm.addEventListener('submit', (e) => {
+  waitlistForm.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.getElementById('waitlistEmail')?.value.trim();
     waitlistMessage.textContent = email
@@ -37,74 +30,94 @@ if (waitlistForm && waitlistMessage) {
   });
 }
 
-// ── FEATURE PILLS ──
-const overlay  = document.getElementById('featOverlay');
-const allCards = document.querySelectorAll('.feat-card');
-const allPills = document.querySelectorAll('.feat[data-feat]');
+// ── FEATURE PANEL ──
+const DURATION  = 7000; // ms per card
+const pills     = Array.from(document.querySelectorAll('.feat-pill'));
+const cards     = Array.from(document.querySelectorAll('.feat-card'));
+const fillEls   = Array.from(document.querySelectorAll('.pill-bar-fill'));
 
-function openCard(featId) {
-  const card = document.getElementById('feat-' + featId);
-  if (!card) return;
+let current    = 0;
+let timer      = null;
+let fillStart  = null;
+let fillRaf    = null;
+let paused     = false;
 
-  // Close any open card first
-  closeAll();
+function showCard(index, resetTimer = true) {
+  // deactivate all
+  pills.forEach((p, i) => {
+    p.setAttribute('aria-selected', 'false');
+    fillEls[i].style.transition = 'none';
+    fillEls[i].style.width = '0%';
+  });
+  cards.forEach(c => c.classList.remove('active'));
 
-  card.removeAttribute('hidden');
-  overlay.classList.add('open');
-  overlay.setAttribute('aria-hidden', 'false');
+  // activate target
+  current = index;
+  pills[current].setAttribute('aria-selected', 'true');
+  cards[current].classList.add('active');
 
-  // Mark pill as expanded
-  const pill = document.querySelector(`.feat[data-feat="${featId}"]`);
-  if (pill) pill.setAttribute('aria-expanded', 'true');
-
-  // Focus the close button for accessibility
-  card.querySelector('.feat-card-close')?.focus();
+  if (resetTimer) startTimer();
 }
 
-function closeAll() {
-  allCards.forEach(c => {
-    c.setAttribute('hidden', '');
-  });
-  overlay.classList.remove('open');
-  overlay.setAttribute('aria-hidden', 'true');
-  allPills.forEach(p => p.setAttribute('aria-expanded', 'false'));
+function startTimer() {
+  clearTimeout(timer);
+  cancelAnimationFrame(fillRaf);
+
+  fillEls[current].style.transition = 'none';
+  fillEls[current].style.width = '0%';
+
+  fillStart = performance.now();
+
+  function tick(now) {
+    if (paused) { fillRaf = requestAnimationFrame(tick); return; }
+    const elapsed = now - fillStart;
+    const pct = Math.min((elapsed / DURATION) * 100, 100);
+    fillEls[current].style.transition = 'none';
+    fillEls[current].style.width = pct + '%';
+    if (pct < 100) {
+      fillRaf = requestAnimationFrame(tick);
+    } else {
+      advance();
+    }
+  }
+  fillRaf = requestAnimationFrame(tick);
 }
 
-// Pill click
-allPills.forEach(pill => {
-  pill.addEventListener('click', () => {
-    const featId = pill.dataset.feat;
-    const isOpen = pill.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeAll() : openCard(featId);
+function advance() {
+  showCard((current + 1) % pills.length);
+}
+
+// Manual pill click
+pills.forEach((pill, i) => {
+  pill.addEventListener('click', () => showCard(i));
+});
+
+// Pause on hover over the panel
+const panel = document.querySelector('.features-panel');
+if (panel) {
+  panel.addEventListener('mouseenter', () => { paused = true; });
+  panel.addEventListener('mouseleave', () => {
+    paused = false;
+    fillStart = performance.now() - (parseFloat(fillEls[current].style.width) / 100) * DURATION;
   });
-});
+}
 
-// Close button
-allCards.forEach(card => {
-  card.querySelector('.feat-card-close')?.addEventListener('click', closeAll);
-});
-
-// Overlay click
-overlay.addEventListener('click', closeAll);
-
-// Escape key
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeAll();
-});
+// Kick off
+showCard(0);
 
 // ── SCROLL REVEAL ──
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
+      e.target.style.transform = 'translateX(0)';
     }
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.feat').forEach((el, i) => {
+pills.forEach((el, i) => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = `opacity .4s ease ${i * 0.06}s, transform .4s ease ${i * 0.06}s`;
+  el.style.transform = 'translateX(-14px)';
+  el.style.transition = `opacity .4s ease ${i * 0.07}s, transform .4s ease ${i * 0.07}s`;
   observer.observe(el);
 });
