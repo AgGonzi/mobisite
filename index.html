@@ -3,123 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOBi — Public Transport, Coming Soon</title>
-  <meta name="description" content="MOBi is an upcoming public transport app for Greece. Join the waitlist to hear when it launches." />
+  <title>MOBi — Coming Soon</title>
+  <meta name="description" content="MOBi is an upcoming public transport app for Greece. Join the waitlist." />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="#home" class="logo-link" aria-label="MOBi home">
-        <img src="logo.png" alt="MOBi" class="nav-logo" />
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="theme-toggle-icon">🌙</span>
+  </button>
+
+  <main class="page">
+
+    <!-- GLOW ORBS -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+
+    <!-- LOGO -->
+    <header class="site-header">
+      <a href="#" aria-label="MOBi home">
+        <img src="logo.png" alt="MOBi" class="site-logo" />
       </a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <span class="theme-toggle-icon">🌙</span>
-      </button>
-    </div>
-  </nav>
+    </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <span class="badge">🚌 Public Transport, Reinvented</span>
+    <!-- HERO -->
+    <section class="hero">
+      <span class="badge">🚌 Public transport, reinvented</span>
       <h1>Move smarter<br/>through the city</h1>
-      <p>MOBi is an upcoming mobility companion for public transport in Greece — real-time routes, live arrivals, and seamless trip planning.</p>
-      <div class="hero-status">
-        <span class="status-pill">🚧 Coming soon</span>
-        <p class="status-copy">The app is not available yet. Join the waitlist and be the first to know when it launches.</p>
-      </div>
-      <div class="hero-cta">
-        <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="phone-mockup">
-        <div class="phone-screen">
-          <div class="mock-map">
-            <div class="map-dot" style="top:30%;left:45%"></div>
-            <div class="map-dot pulse" style="top:55%;left:60%"></div>
-            <div class="map-route"></div>
-          </div>
-          <div class="mock-card">
-            <span class="route-badge">🚌 Line 304</span>
-            <p class="arriving">Launching <strong>soon</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p>MOBi is an upcoming mobility companion for public transport in Greece — real-time routes, live arrivals, and seamless trip planning. The app is not available yet.</p>
 
-  <!-- FEATURES -->
-  <section class="features" id="features">
-    <div class="section-inner">
-      <h2>What MOBi is being built for</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feat-icon">🗺️</div>
-          <h3>Live Maps</h3>
-          <p>Track buses and metro lines on a clean, interactive map updated every few seconds.</p>
+      <form class="waitlist-form" id="waitlistForm">
+        <div class="input-wrap">
+          <input
+            type="email"
+            id="waitlistEmail"
+            class="waitlist-input"
+            placeholder="Enter your email address"
+            aria-label="Email address"
+            required
+          />
+          <button type="submit" class="btn-submit">Notify me</button>
         </div>
-        <div class="feature-card">
-          <div class="feat-icon">⏱️</div>
-          <h3>Accurate Arrivals</h3>
-          <p>See precise arrival times instead of guessing at the stop.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feat-icon">🔔</div>
-          <h3>Smart Alerts</h3>
-          <p>Get notified about delays, disruptions, and when your bus is close.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feat-icon">🌙</div>
-          <h3>Dark Mode</h3>
-          <p>Comfortable day and night viewing with a built-in theme toggle.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feat-icon">📴</div>
-          <h3>Offline Access</h3>
-          <p>Download routes and schedules to navigate even without signal.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feat-icon">♿</div>
-          <h3>Accessibility</h3>
-          <p>Designed so every commuter, regardless of ability, can travel with confidence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAITLIST -->
-  <section class="download" id="waitlist">
-    <div class="section-inner dl-inner">
-      <div class="dl-text">
-        <h2>MOBi is on its way.</h2>
-        <p>We're putting the finishing touches on the app. Drop your email below and we'll let you know the moment it's live — before anyone else.</p>
-        <form class="waitlist-form" id="waitlistForm">
-          <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="your@email.com" aria-label="Email address" required />
-          <button type="submit" class="btn btn-primary">Notify me</button>
-        </form>
         <p class="waitlist-message" id="waitlistMessage" aria-live="polite"></p>
+      </form>
+
+      <div class="cities">
+        <span>🚇 Athens</span>
+        <span class="sep">·</span>
+        <span>🚌 Thessaloniki</span>
+        <span class="sep">·</span>
+        <span>🚊 More cities soon</span>
       </div>
-      <div class="dl-visual">
-        <div class="dl-badge">🚇 Athens · 🚌 Thessaloniki · 🚊 More cities planned</div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <div class="features-grid">
+        <div class="feat">
+          <span class="feat-icon">🗺️</span>
+          <span class="feat-label">Live Maps</span>
+        </div>
+        <div class="feat">
+          <span class="feat-icon">⏱️</span>
+          <span class="feat-label">Exact Arrivals</span>
+        </div>
+        <div class="feat">
+          <span class="feat-icon">🔔</span>
+          <span class="feat-label">Smart Alerts</span>
+        </div>
+        <div class="feat">
+          <span class="feat-icon">🌙</span>
+          <span class="feat-label">Dark Mode</span>
+        </div>
+        <div class="feat">
+          <span class="feat-icon">📴</span>
+          <span class="feat-label">Offline Access</span>
+        </div>
+        <div class="feat">
+          <span class="feat-icon">♿</span>
+          <span class="feat-label">Accessibility</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-inner">
-      <img src="logo.png" alt="MOBi" class="footer-logo" />
-      <p>© 2026 MOBi. Built with ❤️ in Greece.</p>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Contact</a>
-      </div>
+    <p>© 2026 MOBi. Built with ❤️ in Greece.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
     </div>
   </footer>
 
