@@ -14,15 +14,16 @@
   <div class="top-controls">
     <div class="lang-picker" id="langPicker">
       <button class="lang-btn" id="langToggle" aria-haspopup="listbox" aria-expanded="false">
+        <span class="lang-flag" id="langFlag">🇬🇧</span>
         <span class="lang-name" id="langName">English</span>
         <span class="lang-chevron">&#8964;</span>
       </button>
       <ul class="lang-dropdown" role="listbox" id="langDropdown" aria-label="Select language">
-        <li role="option" data-lang="el" data-native="Ελληνικά">🇬🇷 Ελληνικά</li>
-        <li role="option" data-lang="en" data-native="English">🇬🇧 English</li>
-        <li role="option" data-lang="fr" data-native="Français">🇫🇷 Français</li>
-        <li role="option" data-lang="de" data-native="Deutsch">🊗🇨 Deutsch</li>
-        <li role="option" data-lang="es" data-native="Español">🇪🇸 Español</li>
+        <li role="option" data-lang="el" data-flag="🇬🇷" data-native="Ελληνικά">🇬🇷 Ελληνικά</li>
+        <li role="option" data-lang="en" data-flag="🇬🇧" data-native="English">🇬🇧 English</li>
+        <li role="option" data-lang="fr" data-flag="🇫🇷" data-native="Français">🇫🇷 Français</li>
+        <li role="option" data-lang="de" data-flag="🇩🇪" data-native="Deutsch">🇩🇪 Deutsch</li>
+        <li role="option" data-lang="es" data-flag="🇪🇸" data-native="Español">🇪🇸 Español</li>
       </ul>
     </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -103,7 +104,7 @@
         <div class="feat-card" id="feat-maps">
           <div class="feat-card-icon">🗺️</div>
           <h3 data-i18n="feat_maps">Live Maps</h3>
-          <p data-i18n="feat_maps_desc">Track buses, metro lines, and trams on a clean interactive map that refreshes every few seconds. See exactly where your vehicle is — no more wondering if it’s around the corner.</p>
+          <p data-i18n="feat_maps_desc">Track buses, metro lines, and trams on a clean interactive map that refreshes every few seconds. See exactly where your vehicle is — no more wondering if it's around the corner.</p>
         </div>
         <div class="feat-card" id="feat-arrivals">
           <div class="feat-card-icon">⏱️</div>
@@ -113,7 +114,7 @@
         <div class="feat-card" id="feat-alerts">
           <div class="feat-card-icon">🔔</div>
           <h3 data-i18n="feat_alerts">Smart Alerts</h3>
-          <p data-i18n="feat_alerts_desc">Receive timely notifications for service delays, line disruptions, and when your bus is approaching. MOBi pings you so you don’t have to keep checking.</p>
+          <p data-i18n="feat_alerts_desc">Receive timely notifications for service delays, line disruptions, and when your bus is approaching. MOBi pings you so you don't have to keep checking.</p>
         </div>
         <div class="feat-card" id="feat-dark">
           <div class="feat-card-icon">🌙</div>
@@ -123,7 +124,7 @@
         <div class="feat-card" id="feat-offline">
           <div class="feat-card-icon">📴</div>
           <h3 data-i18n="feat_offline">Offline Access</h3>
-          <p data-i18n="feat_offline_desc">Download your city’s routes and timetables locally. Navigate the network even when you have no signal underground or in a dead zone.</p>
+          <p data-i18n="feat_offline_desc">Download your city's routes and timetables locally. Navigate the network even when you have no signal underground or in a dead zone.</p>
         </div>
         <div class="feat-card" id="feat-a11y">
           <div class="feat-card-icon">♿</div>
